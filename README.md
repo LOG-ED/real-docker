@@ -1,5 +1,5 @@
 # Real Docker
-### Corso base su Docker
+### Corso base di Docker per essere davvero operativi
 
 Questo è il repository ufficiale del corso. E' possibile consultare la scheda e i materiali del corso a questo indirizzo: 
 **https://log-ed.github.io/real-docker**
