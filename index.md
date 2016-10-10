@@ -15,7 +15,7 @@ Bilanciando esercitazioni pratiche e teoria, saranno introdotti i concetti e gli
 ### Durata: 2 sessioni
  
 ### Svolgimento delle sessioni:  
-Le sessioni sono attive **dal 14 ottobre**, 3 giorni la settimana:  
+Le sessioni sono attive **dal 14 novembre**, 3 giorni la settimana:  
 
 - **il lunedì e il giovedì dalle 18:30 alle 20:30.**  
 - **il venerdì dalle 14.00 alle 18.00**
