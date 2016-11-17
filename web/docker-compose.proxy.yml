@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  consul:
+    image: progrium/consul
+    ports:
+      - "8300:8300"
+      - "8400:8400"
+      - "8500:8500"
+    command: -server -bootstrap -rejoin -advertise=$DOCKER_IP
+
+  registrator:
+    image: gliderlabs/registrator
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+    command: -ip $DOCKER_IP consul://consul:8500
+    depends_on:
+      - consul
+
+  proxy:
+    container_name: docker-flow-proxy
+    image: vfarcic/docker-flow-proxy
+    environment:
+      CONSUL_ADDRESS: consul:8500
+    ports:
+      - "80:80"
+      - "8080:8080"
+    depends_on:
+      - consul
+
+  app:
+    image: golang:alpine
+    volumes:
+      - .:/go/src/app
+    working_dir: /go/src/app
+    command: go run main.go
+    depends_on:
+      - mongo
+      - registrator
+    environment:
+      MONGODB_ADDRESS: mongo
+      MONGODB_NAME: test
+      SERVICE_NAME: app
+    ports:
+      - "8080"
+    depends_on:
+      - registrator 
+
+  mongo:
+    image: mongo      
